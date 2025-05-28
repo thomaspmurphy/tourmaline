@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Tourmaline Text Effect */
+.tourmaline-text {
+  background: linear-gradient(
+    45deg,
+    #c2185b,  /* Muted deep pink */
+    #e57373,  /* Soft rose */
+    #388e3c,  /* Muted forest green */
+    #81c784,  /* Soft green */
+    #f57c00,  /* Muted golden orange */
+    #ffb74d,  /* Soft gold */
+    #689f38,  /* Muted yellow-green */
+    #4db6ac,  /* Soft teal */
+    #bf9000,  /* Muted gold */
+    #ff8a65,  /* Soft peach */
+    #66bb6a,  /* Gentle green */
+    #ad1457   /* Muted rose */
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tourmaline-shimmer 15s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(200, 150, 255, 0.3)) 
+          drop-shadow(0 0 20px rgba(255, 182, 193, 0.2))
+          drop-shadow(0 0 8px rgba(144, 238, 144, 0.2));
+  position: relative;
+}
+
+@keyframes tourmaline-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 100% 50%;
+  }
+  66% {
+    background-position: 200% 50%;
+  }
+}
+
+.tourmaline-text:hover {
+  animation-duration: 8s;
+  filter: drop-shadow(0 0 16px rgba(200, 150, 255, 0.4)) 
+          drop-shadow(0 0 24px rgba(255, 182, 193, 0.3))
+          drop-shadow(0 0 12px rgba(144, 238, 144, 0.3));
+} 
