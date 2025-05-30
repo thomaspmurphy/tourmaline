@@ -1,39 +1,39 @@
-import React, { useState } from 'react'
-import ThreadList from './ThreadList'
-import ThreadView from './ThreadView'
+import React, { useState } from "react";
+import ThreadList from "./ThreadList";
+import ThreadView from "./ThreadView";
 
-export type View = 'threads' | 'thread'
+export type View = "threads" | "thread";
 
 interface RouterState {
-  view: View
-  threadId?: number
+  view: View;
+  threadId?: number;
 }
 
 const Router: React.FC = () => {
-  const [routerState, setRouterState] = useState<RouterState>({ view: 'threads' })
+  const [routerState, setRouterState] = useState<RouterState>({
+    view: "threads",
+  });
 
   const navigateToThreads = () => {
-    setRouterState({ view: 'threads' })
-  }
+    setRouterState({ view: "threads" });
+  };
 
   const navigateToThread = (threadId: number) => {
-    setRouterState({ view: 'thread', threadId })
-  }
+    setRouterState({ view: "thread", threadId });
+  };
 
   switch (routerState.view) {
-    case 'thread':
+    case "thread":
       return (
-        <ThreadView 
-          threadId={routerState.threadId!} 
+        <ThreadView
+          threadId={routerState.threadId!}
           onBack={navigateToThreads}
         />
-      )
-    case 'threads':
+      );
+    case "threads":
     default:
-      return (
-        <ThreadList onThreadClick={navigateToThread} />
-      )
+      return <ThreadList onThreadClick={navigateToThread} />;
   }
-}
+};
 
-export default Router 
+export default Router;

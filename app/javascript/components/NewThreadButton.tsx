@@ -1,44 +1,46 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../store'
-import { Button } from './ui/button'
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog'
-import { Input } from './ui/input'
-import { Textarea } from './ui/textarea'
-import { Label } from './ui/label'
-import { apiService } from '../services/api'
+} from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Label } from "./ui/label";
+import { apiService } from "../services/api";
 
 const NewThreadButton: React.FC = () => {
-  const currentUser = useSelector((state: RootState) => state.users.currentUser)
-  const [open, setOpen] = useState(false)
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const currentUser = useSelector(
+    (state: RootState) => state.users.currentUser,
+  );
+  const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!currentUser) return
+    e.preventDefault();
+    if (!currentUser) return;
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
-      await apiService.createThread({ title, content })
-      
-      setOpen(false)
-      setTitle('')
-      setContent('')
+      await apiService.createThread({ title, content });
+
+      setOpen(false);
+      setTitle("");
+      setContent("");
       // TODO: Refresh threads list or add to Redux store
     } catch (error) {
-      console.error('Error creating thread:', error)
+      console.error("Error creating thread:", error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -71,12 +73,12 @@ const NewThreadButton: React.FC = () => {
             />
           </div>
           <Button type="submit" disabled={isSubmitting} className="w-full">
-            {isSubmitting ? 'Creating...' : 'Create Thread'}
+            {isSubmitting ? "Creating..." : "Create Thread"}
           </Button>
         </form>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
 
-export default NewThreadButton 
+export default NewThreadButton;

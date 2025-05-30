@@ -1,2 +1,2 @@
 // Import all the channels to be used by Action Cable
-import "./thread_channel"
+import "./thread_channel";

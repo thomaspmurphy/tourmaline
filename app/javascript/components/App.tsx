@@ -1,6 +1,6 @@
-import React from 'react'
-import Header from './Header'
-import Router from './Router'
+import React from "react";
+import Header from "./Header";
+import Router from "./Router";
 
 const App: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <Header />
       <Router />
     </div>
-  )
-}
+  );
+};
 
-export default App 
+export default App;
